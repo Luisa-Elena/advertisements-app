@@ -57,6 +57,7 @@ curl -X POST http://localhost:8080/api/ads \
 2. **Service**:
    - The `save` method receives a map of field names and values, which represent the ad attributes.
    - It retrieves the **ad type** from the map and uses the **`Registry`** to look up the appropriate **ad class**.
+   - The **`Registry`** holds a Map bhaving as key the ad type and the value the specific ad class for that type. Example: "CAR" -> CarAd.class  
    - The `AdBuilder` then creates an instance of the ad class using the constructor matching the provided field values.
 
 3. **`AdBuilder.buildAd(Class<? extends Ad> adClass, Map<String, Object> fieldValueMap)`**:
@@ -66,3 +67,11 @@ curl -X POST http://localhost:8080/api/ads \
 
 4. **Repository**:
    - Stores all ads in a `ConcurrentHashMap<Integer, Ad>` where the Integer value is the ID of the ad.
+  
+
+### Steps for adding a new ad type to the app:
+1. Extend the base class Ad and create a new model class for the new advertisement, containing all desired fields to store information for the new ad type.
+2. Put in the registry map the new ad type and its corresponding class created previously.
+3. Put the new ad type in the **`TypeRepository`** to be fetched by the frontend when a user has to choose the type of ad he wants to insert.
+4. Create a form for this new ad on the frontend.
+5. The fields in JSON received from the frontend must match the name of the fields in the concrete ad class for the AdBuilder to construct a new instance of that ad.  
