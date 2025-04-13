@@ -47,27 +47,6 @@ curl -X POST http://localhost:8080/api/ads \
 ```
 
 
-## Backend Reflection for Ad Creation
-
-In the backend, we use **reflection** to dynamically create instances of different ad types (e.g., Car Ads, Real Estate Ads, Pet Ads). This approach allows for flexible and scalable ad management.
-
-### How It Works
-
-1. **Ad Type Mapping**:
-   Each advertisement type is represented by a specific class (e.g., `CarAd`, `RealEstateAd`, `PetAd`). These are subclasses of the Ad class which has the common fields for all advertisements - description, location and price. When a new ad is created, the **ad type** is passed along with the other field values.  
-
-2. **Reflection and Registry**:
-   - When the backend receives the request to create a new ad, it checks the **ad type** (`"CAR"`, `"REAL_ESTATE"`, `"PET"`, etc.) and uses it to look up the corresponding **ad class** in the **`Registry`**.
-   - The `Registry` maintains a mapping between the ad types (as strings) and their corresponding ad classes (for example: "PET" maps to PetAd.class).
-
-3. **Ad Creation with Reflection**:
-   - The backend uses the **`AdBuilder`** class to dynamically create an instance of the corresponding ad type.
-   - The **`AdBuilder`** uses reflection to inspect the constructor of the specific ad class and matches the constructor parameters with the values provided in the **field-value map**. The `AdBuilder` then uses this data to instantiate the ad class and populate its fields.
-   - The field-value map is just a Map<String, Object> of the JSON with data received from the frontend when a form for posting a new ad was submitted.  
-
-4. **Saving the Ad**:
-   - Once the ad object is created, it's saved into the **ad repository** using the `adRepository.save()` method.
-
 ### Code Flow for posting a new ad:
 
 1. **Controller**:
