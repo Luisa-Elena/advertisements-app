@@ -15,7 +15,7 @@ Get all ads example:
 ![Image](https://github.com/user-attachments/assets/ea098d03-3979-43a9-87b7-9a7849b62cb7)  
 
 Now if the user clicks on a specific ad, he can view all the details for that ad:  
-![Image](https://github.com/user-attachments/assets/20fd1da5-009a-4831-ae94-53fc133e3bd1)
+![Image](https://github.com/user-attachments/assets/57b5cc73-f60d-4414-b291-5054610a5e93)
 
 Post a new ad example:
 First, the user must choose what type of ad he wants to post, in order to get the specific form for that ad type:  
