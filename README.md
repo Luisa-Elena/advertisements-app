@@ -12,12 +12,12 @@ cd path/to/your/directory
 ```sh
 git clone https://github.com/Luisa-Elena/advertisements-app.git
 ```
-3. For backend:
+3. For backend:  
 3.1. Navigate to the cloned folder for backend:
 ```sh
 cd advertisements-app/backend
 ```
-4.For frontend:
+4.For frontend:  
 4.1. Navigate to the cloned folder for frontend:
 ```sh
 cd advertisements-app/frontend/fe-app
