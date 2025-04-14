@@ -1,6 +1,36 @@
 # advertisements-app
 
-A user-friendly web application designed to manage various types of ads. Users can view, create, and interact with ads for different categories like Cars, Real Estate, and Pets. The app provides an easy way to search, create, and view ads with detailed information.  
+A user-friendly web application designed to manage various types of ads. Users can view, create, and interact with ads for different categories like Cars, Real Estate, and Pets. The app provides an easy way to view and create ads with detailed information.  
+
+## **Installation**
+1. Navigate to the directory where you want to clone the project.  
+In your terminal, type:  
+```sh
+cd path/to/your/directory
+```
+2. Clone the project using:  
+```sh
+git clone https://github.com/Luisa-Elena/advertisements-app.git
+```
+3. For backend:
+3.1. Navigate to the cloned folder for backend:
+```sh
+cd advertisements-app/backend
+```
+4.For frontend:
+4.1. Navigate to the cloned folder for frontend:
+```sh
+cd advertisements-app/frontend/fe-app
+```
+4.2. Now type:
+```sh
+npm install
+```
+4.3. For starting the frontend app:
+```sh
+npm start
+```
+
 
 ## Features
 - **View All Ads**: Fetch and display all ads in a card format with their details.
