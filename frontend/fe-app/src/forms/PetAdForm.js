@@ -26,7 +26,7 @@ const PetAdForm = ({ onCancel }) => {
     }
 
     const payload = {
-      type: 'pet',
+      type: 'PET',
       description: formData.description,
       price: parsedPrice,
       location: formData.location,

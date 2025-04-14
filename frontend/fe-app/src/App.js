@@ -72,21 +72,35 @@ const App = () => {
       key={index}
       onClick={() => fetchAdById(index + 1)}
       style={{
-        border: '1px solid #ccc',
-        borderRadius: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        border: '1px solid #ddd',
+        borderRadius: '15px',
         padding: '15px',
-        marginBottom: '15px',
-        boxShadow: '2px 2px 8px rgba(0,0,0,0.1)',
-        cursor: 'pointer'
+        margin: '10px',
+        width: '250px',
+        backgroundColor: '#fff',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
       }}
+      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
     >
+      <h4 style={{ margin: '0 0 10px 0', fontSize: '1.1em', color: '#333' }}>{ad.type}</h4> {/* Displaying the type first */}
       {Object.entries(ad).map(([key, value]) => (
-        <div key={key}>
-          <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
-        </div>
+        key !== 'type' && (  // Skip the type field here since it's already displayed
+          <div key={key} style={{ marginBottom: '8px', fontSize: '0.9em', color: '#555' }}>
+            <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+          </div>
+        )
       ))}
     </div>
   );
+  
+  
+  
 
   return (
     <div style={{ padding: 20, fontFamily: 'Arial' }}>
@@ -125,14 +139,22 @@ const App = () => {
       {view === 'ads' && (
         <>
           <h3>All Advertisements</h3>
-          {ads.length === 0 ? (
-            <p>No ads found.</p>
-          ) : (
-            ads.map((ad, index) => renderAdCard(ad, index))
-          )}
-          <button onClick={handleBack}>Back</button>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start', // Align items from left to right
+            gap: '20px', // space between cards
+          }}>
+            {ads.length === 0 ? (
+              <p>No ads found.</p>
+            ) : (
+              ads.map((ad, index) => renderAdCard(ad, index))
+            )}
+          </div>
+          <button onClick={handleBack} style={{ marginTop: '20px' }}>Back</button>
         </>
       )}
+
 
       {view === 'singleAd' && selectedAd && (
         <>
@@ -145,9 +167,11 @@ const App = () => {
             marginBottom: '20px'
           }}>
             {Object.entries(selectedAd).map(([key, value]) => (
-              <div key={key}>
-                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
-              </div>
+              key !== 'type' && (
+                <div key={key}>
+                  <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                </div>
+              )
             ))}
           </div>
           <button onClick={() => setView('ads')}>Back to All Ads</button>
