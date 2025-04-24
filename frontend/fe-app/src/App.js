@@ -67,10 +67,10 @@ const App = () => {
     setSelectedAd(null);
   };
 
-  const renderAdCard = (ad, index) => (
+  const renderAdCard = (ad) => (
     <div
-      key={index}
-      onClick={() => fetchAdById(index + 1)}
+      key={ad.id}  // Use the ad's id as the key
+      onClick={() => fetchAdById(ad.id)}  // Use the ad's id directly to fetch the ad
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -90,16 +90,14 @@ const App = () => {
     >
       <h4 style={{ margin: '0 0 10px 0', fontSize: '1.1em', color: '#333' }}>{ad.type}</h4> {/* Displaying the type first */}
       {Object.entries(ad).map(([key, value]) => (
-        key !== 'type' && (  // Skip the type field here since it's already displayed
+        key !== 'id' && key !== 'type' && (  // Skip the id and type field from display
           <div key={key} style={{ marginBottom: '8px', fontSize: '0.9em', color: '#555' }}>
             <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
           </div>
         )
       ))}
     </div>
-  );
-  
-  
+  );  
   
 
   return (
@@ -167,7 +165,7 @@ const App = () => {
             marginBottom: '20px'
           }}>
             {Object.entries(selectedAd).map(([key, value]) => (
-              key !== 'type' && (
+              key !== 'type' && key !== 'id' && (
                 <div key={key}>
                   <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
                 </div>
