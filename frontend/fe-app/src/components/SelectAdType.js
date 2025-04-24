@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SelectAdType = () => {
   const [availableTypes, setAvailableTypes] = useState([]);
-  const navigate = useNavigate(); // Use navigate hook for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAdTypes = async () => {

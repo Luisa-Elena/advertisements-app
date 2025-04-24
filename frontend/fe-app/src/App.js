@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import AdsList from './components/AdsList';
@@ -11,7 +12,7 @@ import PetAdForm from './forms/PetAdForm';
 const App = () => {
   return (
     <Router>
-      <div style={{ padding: 20, fontFamily: 'Arial' }}>
+      <div className="app-container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ads" element={<AdsList />} />

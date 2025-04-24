@@ -71,7 +71,7 @@ const PetAdForm = () => {
       <input name="age" placeholder="Age" type="number" value={formData.age} onChange={handleInputChange} required /><br />
       <input name="breed" placeholder="Breed" value={formData.breed} onChange={handleInputChange} required /><br /><br />
       <button type="submit">Submit Ad</button>
-      <button type="button" onClick={onCancel} style={{ marginLeft: '10px' }}>Cancel</button>
+      <button type="button" onClick={onCancel} >Cancel</button>
     </form>
   );
 };

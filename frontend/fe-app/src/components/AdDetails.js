@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/AdDetails.css';
 
 const AdDetails = () => {
   const { id } = useParams();
   const [ad, setAd] = useState(null);
+
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate('/ads');
+  };
 
   useEffect(() => {
     const fetchAdById = async () => {
@@ -28,15 +34,7 @@ const AdDetails = () => {
   return (
     <>
       <h3>Ad Details</h3>
-      <div
-        style={{
-          border: '1px solid #ccc',
-          borderRadius: '10px',
-          padding: '20px',
-          boxShadow: '2px 2px 8px rgba(0,0,0,0.1)',
-          marginBottom: '20px',
-        }}
-      >
+      <div className="ad-details-container">
         {Object.entries(ad).map(([key, value]) =>
           key !== 'type' && key !== 'id' ? (
             <div key={key}>
@@ -45,6 +43,7 @@ const AdDetails = () => {
           ) : null
         )}
       </div>
+      <button onClick={handleGoBack} >Back to all ads</button>
     </>
   );
 };

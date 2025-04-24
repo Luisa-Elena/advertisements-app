@@ -11,7 +11,7 @@ const CarAdForm = () => {
 
   const navigate = useNavigate();
   const onCancel = () => {
-    navigate('/'); // Navigate to the home page
+    navigate('/');
   };
 
   const handleInputChange = (e) => {
@@ -63,7 +63,7 @@ const CarAdForm = () => {
       <input name="location" placeholder="Location" value={formData.location} onChange={handleInputChange} required /><br />
       <input name="brand" placeholder="Brand" value={formData.brand} onChange={handleInputChange} required /><br /><br />
       <button type="submit">Submit Ad</button>
-      <button type="button" onClick={onCancel} style={{ marginLeft: '10px' }}>Cancel</button>
+      <button type="button" onClick={onCancel} >Cancel</button>
     </form>
   );
 };

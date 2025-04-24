@@ -40,7 +40,7 @@ const RealEstateAdForm = () => {
       description: formData.description,
       price: parsedPrice,
       location: formData.location,
-      surface: parsedSurface, // ✔️ parsed as double
+      surface: parsedSurface,
     };
   
     try {
@@ -71,7 +71,7 @@ const RealEstateAdForm = () => {
       <input name="location" placeholder="Location" value={formData.location} onChange={handleInputChange} required /><br />
       <input name="surface" placeholder="Surface (sqm)" type="Number" inputMode='decimal' value={formData.surface} onChange={handleInputChange} required /><br /><br />
       <button type="submit">Submit Ad</button>
-      <button type="button" onClick={onCancel} style={{ marginLeft: '10px' }}>Cancel</button>
+      <button type="button" onClick={onCancel} >Cancel</button>
     </form>
   );
 };
