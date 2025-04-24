@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const CarAdForm = ({ onCancel }) => {
+const CarAdForm = () => {
   const [formData, setFormData] = useState({
     description: '',
     price: '',
     location: '',
     brand: '',
   });
+
+  const navigate = useNavigate();
+  const onCancel = () => {
+    navigate('/'); // Navigate to the home page
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

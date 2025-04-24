@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const RealEstateAdForm = ({ onCancel }) => {
+const RealEstateAdForm = () => {
   const [formData, setFormData] = useState({
     description: '',
     price: '',
     location: '',
     surface: '',
   });
+
+  const navigate = useNavigate();
+  const onCancel = () => {
+    navigate('/');
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

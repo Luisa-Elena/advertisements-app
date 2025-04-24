@@ -1,10 +1,17 @@
-const Home = ({ onGetAllAds, onPostNewAd }) => (
-    <>
-      <h2>Advertisement App</h2>
-      <button onClick={onGetAllAds}>Get All Ads</button>
-      <button onClick={onPostNewAd}>Post New Ad</button>
-    </>
-  );
-  
-  export default Home;
-  
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Home = () => (
+  <>
+    <h2>Advertisement App</h2>
+    <Link to="/ads">
+      <button>Get All Ads</button>
+    </Link>
+    <br />
+    <Link to="/select-type">
+      <button>Post New Ad</button>
+    </Link>
+  </>
+);
+
+export default Home;

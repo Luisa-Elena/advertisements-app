@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PetAdForm = ({ onCancel }) => {
+const PetAdForm = () => {
   const [formData, setFormData] = useState({
     description: '',
     price: '',
@@ -9,6 +10,11 @@ const PetAdForm = ({ onCancel }) => {
     age: '',
     breed: '',
   });
+
+  const navigate = useNavigate();
+  const onCancel = () => {
+    navigate('/');
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
