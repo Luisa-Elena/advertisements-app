@@ -96,12 +96,19 @@ curl -X POST http://localhost:8080/api/ads \
    - If all required parameters are provided, a new ad instance is created and returned.
 
 4. **Repository**:
-   - Stores all ads in a `ConcurrentHashMap<Integer, Ad>` where the Integer value is the ID of the ad.
+   - Interacts with the database via SQL queries to get ads or save a new ad.  
   
 
 ### Steps for adding a new ad type to the app:
 1. Extend the base class Ad and create a new model class for the new advertisement, containing all desired fields to store information for the new ad type.
 2. Put in the registry map the new ad type and its corresponding class created previously.
-3. Put the new ad type in the **`TypeRepository`** to be fetched by the frontend when a user has to choose the type of ad he wants to insert.
+3. Put the new ad type in the databse to be fetched by the frontend when a user has to choose the type of ad he wants to insert.
 4. Create a form for this new ad on the frontend.
-5. The fields in JSON received from the frontend must match the name of the fields in the concrete ad class for the AdBuilder to construct a new instance of that ad.  
+5. The fields in JSON received from the frontend must match the name of the fields in the concrete ad class for the AdBuilder to construct a new instance of that ad.
+
+
+
+## Database
+![Image](https://github.com/user-attachments/assets/35423bbd-6bca-45bd-9895-dbadb6e935cd)
+
+Idea: Store specific ad fields in a json, instead of creating separate tables for each ad type. This approach makes it easier to get all ads.  
