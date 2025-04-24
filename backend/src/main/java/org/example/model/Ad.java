@@ -19,4 +19,20 @@ public abstract class Ad {
         this.location = location;
         this.price = price;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }

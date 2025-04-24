@@ -1,6 +1,7 @@
 package org.example.service;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.example.model.Ad;
 import org.example.registry.Registry;
 import org.example.repository.AdRepository;
@@ -30,7 +31,7 @@ public class AdService {
      * @return a JSON string containing all ads in the repository
      */
     public String getAll() {
-        List<Ad> adsList = adRepository.getAll();
+        List<JsonObject> adsList = adRepository.getAll();
 
         Gson gson = new Gson();
         return gson.toJson(adsList);
@@ -46,7 +47,7 @@ public class AdService {
      * @return a JSON string containing the ad with the given ID
      */
     public String getById(int id) {
-        Ad ad = adRepository.getById(id);
+        JsonObject ad = adRepository.getById(id);
         Gson gson = new Gson();
         return gson.toJson(ad);
     }
