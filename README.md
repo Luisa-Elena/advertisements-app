@@ -111,10 +111,10 @@ curl -X POST http://localhost:8080/api/ads \
 ## Database
 There are 2 possible approaches for the database design, each having its pros and cons:  
 1. **Use a JSONB column** to store specific fields for an ad type.  
-   -> Explained below in the section [JSONB-Based Design](#-idea-jsonb)
+   -> Explained below in the section [JSONB-Based Design](#-idea-jsonb) and used in the current implementation  
 
 2. **Create a separate table** for each ad type.  
-   → Check the branch [`version2`](https://github.com/Luisa-Elena/advertisements-app/tree/version2) (backend code for this database design is also available - the queries and logic in AdRepository needed to be changed)  
+   → Check the branch [`version2`](https://github.com/Luisa-Elena/advertisements-app/tree/version2) — this includes the backend code for this database design (the queries and logic in the `AdRepository` class needed to be changed  
 
 
 ## JSONB-Based Design
