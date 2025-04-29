@@ -102,13 +102,38 @@ curl -X POST http://localhost:8080/api/ads \
 ### Steps for adding a new ad type to the app:
 1. Extend the base class Ad and create a new model class for the new advertisement, containing all desired fields to store information for the new ad type.
 2. Put in the registry map the new ad type and its corresponding class created previously.
-3. Put the new ad type in the databse to be fetched by the frontend when a user has to choose the type of ad he wants to insert.
+3. Put the new ad type in the databse (insert it in the Type table) - to be fetched by the frontend when a user has to choose the type of ad he wants to insert.
 4. Create a form for this new ad on the frontend.
-5. The fields in JSON received from the frontend must match the name of the fields in the concrete ad class for the AdBuilder to construct a new instance of that ad.
+5. The fields in JSON received from the frontend must match the name of the fields in the concrete ad class (created at step 1) for the AdBuilder to construct a new instance of that ad.
 
 
 
 ## Database
+There are 2 possible approaches for the database design, each having its pros and cons:  
+1. **Use a JSONB column** to store specific fields for an ad type.  
+   -> Explained below in the section [JSONB-Based Design](#-idea-jsonb)
+
+2. **Create a separate table** for each ad type.  
+   → Check the branch [`version2`](https://github.com/Luisa-Elena/advertisements-app/tree/version2) (backend code for this database design is also available - the queries and logic in AdRepository needed to be changed)  
+
+
+## JSONB-Based Design
+
 ![Image](https://github.com/user-attachments/assets/35423bbd-6bca-45bd-9895-dbadb6e935cd)
 
-Idea: Store specific ad fields in a json, instead of creating separate tables for each ad type. This approach makes it easier to get all ads.  
+### IDEA  
+All ad types are stored in a single `ad` table. Shared fields like `description`, `price`, etc., are stored in columns, and type-specific fields are stored in a `JSONB` column (e.g., `spec`).
+
+### PROS  
+- **Flexible schema**: You can store any kind of data in the `spec` field.  
+- **Easy extensibility**: Adding a new ad type requires no schema change.  
+- **No JOINs required**: All data is in one row; queries can be simpler.
+
+### CONS  
+- **Weaker validation**: PostgreSQL can't validate what's inside the `JSONB`; constraints must be handled in your application code.  
+- **Schema invisibility**: It’s harder to understand the data model just by looking at the DB schema.
+
+### Ideal for  
+- Projects where **ad types are not fixed yet or need to change frequently**.  
+- Systems where **schema flexibility is more important than strict validation**.
+
