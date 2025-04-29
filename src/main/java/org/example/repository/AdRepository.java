@@ -87,12 +87,8 @@ public class AdRepository {
 
 
     /**
-     * Inserts a new advertisement into the database.
-     * <p>
-     * The ad's type, description, price, location, and specifications (as JSON) are stored.
-     * The type is matched by name to get its corresponding ID from the {@code Type} table.
-     * </p>
-     *
+     * Inserts a new advertisement into the database, in the corresponding table fot the given ad type.
+     
      * @param newAd the {@code Ad} object to be saved. Must not be {@code null}.
      * @throws IllegalArgumentException if {@code newAd} is {@code null}.
      * @throws RuntimeException if an error occurs during the database insertion.
