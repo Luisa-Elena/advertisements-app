@@ -8,8 +8,6 @@ Create a separate table for storing specific fields for each type. Each concrete
 ### PROS  
 - **Strong typing**: All fields are defined explicitly in SQL with types and constraints.  
 - **Schema clarity**: The database schema clearly communicates what data exists for each ad type.  
-- **Relational integrity**: You get full use of relational constraints (e.g., `NOT NULL`, `FOREIGN KEY`, `CHECK`, etc.).  
-- **Powerful querying**: Complex queries are easier to optimize, and joins are predictable.
 
 ### CONS  
 - **Rigid**: Adding a new ad type means:  
