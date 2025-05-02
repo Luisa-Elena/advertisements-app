@@ -1,6 +1,6 @@
 # advertisements-app
 
-A user-friendly web application designed to manage various types of ads. Users can view, create, and interact with ads for different categories like Cars, Real Estate, and Pets. The app provides an easy way to view and create ads with detailed information.  
+A user-friendly web application designed to manage various types of ads. Users can view, create, and interact with ads of different categories like Cars, Real Estate, and Pets.  
 
 ## **Installation**
 1. Navigate to the directory where you want to clone the project.  
